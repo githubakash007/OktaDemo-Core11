@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace OktaDemoCore.Controllers
 {
@@ -31,5 +30,33 @@ namespace OktaDemoCore.Controllers
         {
             return View();
         }
+
+        [Authorize]
+        public IActionResult Secure()
+        {
+            return View();
+        }
+
+        public IActionResult Signin() {
+
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return Challenge(OpenIdConnectDefaults.AuthenticationScheme);
+            }
+
+            return View("Welcome");
+        }
+
+        public IActionResult Signout()
+        {
+
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                return SignOut(CookieAuthenticationDefaults.AuthenticationScheme, OpenIdConnectDefaults.AuthenticationScheme);
+            }
+
+            return View("Index");
+        }
+        
     }
 }

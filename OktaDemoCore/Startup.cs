@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace OktaDemoCore
 {
@@ -48,7 +52,30 @@ namespace OktaDemoCore
             }
 
             app.UseStaticFiles();
+            //okta related stuff -start
+            app.UseCookieAuthentication(new CookieAuthenticationOptions()
+            {
+                AuthenticationScheme = "Cookies",
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true
+            });
 
+            app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions()
+            {
+                AuthenticationScheme = "oidc",
+                SignInScheme = "Cookies",
+                Authority = "https://dev-409691.oktapreview.com",
+                ResponseType = OpenIdConnectResponseType.Code,
+                ClientId = "0oabyl6jnrZPEkCfU0h7",
+                ClientSecret = "kqWG0Pjxi8sRTYH_dUbwMaz484x7dwSLDRQLN_cs",
+                GetClaimsFromUserInfoEndpoint = true,
+                TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true
+                },
+                SaveTokens = true
+            });
+            //okta related stuff -end
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
