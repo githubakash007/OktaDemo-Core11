@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OktaDemoCore", "OktaDemoCore\OktaDemoCore.csproj", "{A95FFCE3-EED9-4B8D-9C7C-044A125611CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A95FFCE3-EED9-4B8D-9C7C-044A125611CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A95FFCE3-EED9-4B8D-9C7C-044A125611CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A95FFCE3-EED9-4B8D-9C7C-044A125611CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A95FFCE3-EED9-4B8D-9C7C-044A125611CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C88F93F6-73D1-4B56-BC28-7334475B0C34}
+	EndGlobalSection
+EndGlobal
